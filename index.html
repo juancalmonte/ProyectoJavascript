@@ -1,10 +1,35 @@
 <html>
 	<head>
+	
 		<title>		
 			hello,world	
 		</title>
-	
+		
+		<script type= "text/javascript">
+			
+			var nombre = "Juan Carlos Almonte Rozon";
+			console.log(nombre);
+			alert(nombre);
+			var temporal = 0.0; 
+			
+			
+			function ciclo(hasta)
+			{	
+					temporal =  ( (hasta + 1) * (hasta / 2 ) );
+			
+				console.log(temporal);
+			};
+			
+			function recorrer()
+			{
+			var numero = document.getElementById("numero").value;
+				ciclo(numero);
+			};
+			</script>
 		<body>	
-			hola Juan Carlos Almonte
+			<input id = "numero" > 
+			<button onclick = "recorrer();"> Correr </button>
+			
+			
 		</body>
 </head>
