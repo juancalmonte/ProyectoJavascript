@@ -6,42 +6,96 @@
            
         </head>
         <body>
-                <div>
-                        <label> id </label>
-                        <input id = "id" > 
-                        </div>
-                        <div>   
-                        <label> Nombre </label>
-                        <input id = "nombre" type = "text"  >
-                        </div>
-                        <div>
-                        <label> Matricula </label>
-                        <input id = "matricula" type = "text" >  
-                        </div>
-                        <div>
-                        <label> identificacion </label>
-                        <input id = "identificacion" type = "text"   > 
-                        </div>
-                        <div>
-                        <label> telefono </label>
-                        <input id = "telefono" type = "text"  > 
-                        </div>
-                        <div>
-                        <label> email </label>
-                        <input id = "email" type = "text"  > 
-                        </div>
+               
+                        <form class="form-inline">
+                                <div class="form-group">
+                                        <label class="sr-only" for="id">ID</label>
+                                        <div class="input-group">
+                                                 <div class="input-group-addon">ID</div>
+                                                 <input type="text" class="form-control" id="id" placeholder="id">
+                                        </div>
+                                </div>
+                                      </form>
+                
+                        <form class="form-inline">
+                                <div class="form-group">
+                                        <label class="sr-only" for="nombre">NOMBRE</label>
+                                        <div class="input-group">
+                                                <div class="input-group-addon">NM</div>
+                                                <input type="text" class="form-control" id="nombre" placeholder="nombre">
+                                        </div>
+                                 </div>
+                        </form>
+                
+                        <form class="form-inline">
+                                        <div class="form-group">
+                                                <label class="sr-only" for="matricula">MATRICULA</label>
+                                                <div class="input-group">
+                                                        <div class="input-group-addon">MA</div>
+                                                        <input type="text" class="form-control" id="matricula" placeholder="matricula">
+                                                </div>
+                                         </div>
+                        </form>
 
+                        <form class="form-inline">
+                                        <div class="form-group">
+                                                <label class="sr-only" for="identificacion">IDENTIFICACION</label>
+                                                <div class="input-group">
+                                                        <div class="input-group-addon">IDNT</div>
+                                                        <input type="text" class="form-control" id="identificacion" placeholder="identificacion">
+                                                </div>
+                                         </div>
+                        </form>
 
-                    
-       
-                                <button  onclick = "recorrer();" type="submit" class="btn btn-primary">Agregar</button>
-                              </form>
+                        <form class="form-inline">
+                                        <div class="form-group">
+                                                <label class="sr-only" for="telefono">TELEFONO</label>
+                                                <div class="input-group">
+                                                        <div class="input-group-addon">TELL</div>
+                                                        <input type="text" class="form-control" id="telefono" placeholder="telefono">
+                                                </div>
+                                         </div>
+                        </form>
 
+                        <form class="form-inline">
+                                        <div class="form-group">
+                                                <label class="sr-only" for="email">EMAIL</label>
+                                                <div class="input-group">
+                                                        <div class="input-group-addon">@</div>
+                                                        <input type="text" class="form-control" id="email" placeholder="email">
+                                                </div>
+                                         </div>
+                        </form>
 
                         
-                        <table id = "estudiantes" border=""> 
-                          
-                         </table>
+                        <button  onclick = "recorrer();" type="submit" class="btn btn-primary">Agregar</button>
+                        
+
+
+                        <div>
+                        <table  id = "estudiantes" border="5"> 
+                                <tr>
+                                        <th>
+                                                ID
+                                        </th>
+                                        <th>
+                                                NOMBRE
+                                        </th>
+                                        <th>
+                                                MATRICULA
+                                        </th>
+                                        <th>
+                                                IDENTIFICACION
+                                        </th>
+                                        <th>
+                                                TELEFONO
+                                        </th>
+                                        <th>
+                                                EMAIL
+                                        </th>
+                                </tr>
+                        </table>
+                        </div>
             </div>
         </body>
   

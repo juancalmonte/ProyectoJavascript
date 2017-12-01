@@ -57,23 +57,29 @@
                         var txtemail = document.createTextNode(est1.email);
         
                         tdId.appendChild(txtId);
+
                         tr.appendChild(tdId);
         
                         tdNombre.appendChild(txtNombre);
-                        tr.appendChild(txtNombre);
+
+                        tr.appendChild(tdNombre);
         
                         tdMatricula.appendChild(txtMatricula);
-                        tr.appendChild(txtMatricula);
+
+                        tr.appendChild(tdMatricula);
         
                         
-                        tdMatricula.appendChild(txtIdentificacion);
-                        tr.appendChild(txtIdentificacion);
+                        tdIdentificacion.appendChild(txtIdentificacion);
+
+                        tr.appendChild(tdIdentificacion);
         
-                        tdMatricula.appendChild(txtTelefono);
-                        tr.appendChild(txtTelefono);
+                        tdTelefono.appendChild(txtTelefono);
+
+                        tr.appendChild(tdTelefono);
         
-                        tdMatricula.appendChild(txtemail);
-                        tr.appendChild(txtemail);
+                        tdemail.appendChild(txtemail);
+                        
+                        tr.appendChild(tdemail);
         
                         table.appendChild(tr);
                        
