@@ -6,8 +6,10 @@
            
         </head>
         <body>
-               
-                        <form class="form-inline">
+                <div style="margin-left: 30%; margin-right: 30%; margin-top: 10px">
+                        <div  class="panel panel-primary">
+                                <div class="panel-heading"  >Registro de estudiantes</div>
+                        <form>
                                 <div class="form-group">
                                         <label class="sr-only" for="id">ID</label>
                                         <div class="input-group">
@@ -15,9 +17,9 @@
                                                  <input type="text" class="form-control" id="id" placeholder="id">
                                         </div>
                                 </div>
-                                      </form>
+                                    
                 
-                        <form class="form-inline">
+                       
                                 <div class="form-group">
                                         <label class="sr-only" for="nombre">NOMBRE</label>
                                         <div class="input-group">
@@ -25,9 +27,9 @@
                                                 <input type="text" class="form-control" id="nombre" placeholder="nombre">
                                         </div>
                                  </div>
-                        </form>
+                       
                 
-                        <form class="form-inline">
+                       
                                         <div class="form-group">
                                                 <label class="sr-only" for="matricula">MATRICULA</label>
                                                 <div class="input-group">
@@ -35,9 +37,8 @@
                                                         <input type="text" class="form-control" id="matricula" placeholder="matricula">
                                                 </div>
                                          </div>
-                        </form>
-
-                        <form class="form-inline">
+                        
+                     
                                         <div class="form-group">
                                                 <label class="sr-only" for="identificacion">IDENTIFICACION</label>
                                                 <div class="input-group">
@@ -45,9 +46,7 @@
                                                         <input type="text" class="form-control" id="identificacion" placeholder="identificacion">
                                                 </div>
                                          </div>
-                        </form>
-
-                        <form class="form-inline">
+                       
                                         <div class="form-group">
                                                 <label class="sr-only" for="telefono">TELEFONO</label>
                                                 <div class="input-group">
@@ -55,9 +54,7 @@
                                                         <input type="text" class="form-control" id="telefono" placeholder="telefono">
                                                 </div>
                                          </div>
-                        </form>
-
-                        <form class="form-inline">
+                       
                                         <div class="form-group">
                                                 <label class="sr-only" for="email">EMAIL</label>
                                                 <div class="input-group">
@@ -65,15 +62,15 @@
                                                         <input type="text" class="form-control" id="email" placeholder="email">
                                                 </div>
                                          </div>
-                        </form>
-
+                        
+                                        </form>
                         
                         <button  onclick = "recorrer();" type="submit" class="btn btn-primary">Agregar</button>
-                        
-
+                </div>
+       
 
                         <div>
-                        <table  id = "estudiantes" border="5"> 
+                        <table  class=" table table-bordered" id = "estudiantes" border="5"> 
                                 <tr>
                                         <th>
                                                 ID
@@ -97,6 +94,7 @@
                         </table>
                         </div>
             </div>
+        </div>
         </body>
   
 </html>
