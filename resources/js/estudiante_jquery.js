@@ -56,7 +56,6 @@ $(document).ready(function () {
             if ($(this).is(':checked')) {
                 var idEstudiante = ($(this).val());
                 var estudiantesArray = JSON.parse(myStorage.getItem("estudiantes"));
-                debugger;
                 estudiantesArray = jQuery.grep(estudiantesArray, function (estudiante) {
                     return estudiante.id !== idEstudiante;
                 });
