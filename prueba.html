@@ -1,0 +1,47 @@
+
+<html>
+  <head>
+    <title>Prueba</title>
+     <script src="resources/js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+
+    <script>
+    var Post= function(){
+    var self=this;
+    self.userId;
+    self.id;
+    self.title;
+    self.body;
+
+    };
+
+  $(document).ready(function (){
+
+      $("#buscar").click(function(){
+       var root = 'https://jsonplaceholder.typicode.com';
+       var id=$("#post_id").val();
+      $.ajax({
+        url: root + '/posts/'+id,
+        method: 'GET'
+      }).then(function(data) {                  
+        console.log(data.title);
+        $("#titulo").text(data.body);
+      });
+
+      });
+
+  });
+      
+    </script>
+  </head>
+  <body>
+    <form>
+      <div class="form-group">
+      <input id="post_id" class="form-control">
+      <br>
+      <button id="buscar" type="reset" class="btn-success">Buscar</button>
+      </div>
+      <h1 id="titulo"></h1>
+    </form>
+  </body>
+</html>

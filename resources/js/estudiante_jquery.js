@@ -59,6 +59,7 @@ $(document).ready(function () {
                 estudiantesArray = jQuery.grep(estudiantesArray, function (estudiante) {
                     return estudiante.id !== idEstudiante;
                 });
+                
                 myStorage.setItem("estudiantes", JSON.stringify(estudiantesArray));
             }
         });
