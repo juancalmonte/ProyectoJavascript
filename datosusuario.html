@@ -8,27 +8,32 @@
 
 <body>
     <script>
-        $.extend({
-            getUrlVars: function () {
-                var vars = [], hash;
-                var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-                for (var i = 0; i < hashes.length; i++) {
-                    hash = hashes[i].split('=');
-                    vars.push(hash[0]);
-                    vars[hash[0]] = hash[1];
-                }
-                return vars;
-            },
-            getUrlVar: function (name) {
-                return $.getUrlVars()[name];
-                
-            }
-        });
-        var allVars = $.getUrlVars();
-        var byName = $.getUrlVar('id');
+        var urlParametro = new URLSearchParams(window.location.search);
+        var idUsuario = urlParametro.get('id');
+        var root = 'https://jsonplaceholder.typicode.com';
+            $.ajax({
+                url: root + '/users/' + idUsuario,
+                method: 'GET'
+            }).then(function (Usuario) 
+            {
+                var post= "<div class='panel panel-primary'>"+
+                    "<div class='panel-heading'>"+
+                    "<h3 class='panel-title'>Datos del usuario</h3>"+
+                    "</div>"+
+                    "<div class='panel-body'>Nombre del usuario:   "+ Usuario.name+"</div>"+
+                    "<div class='panel-body'>Correo del usuario:   "+ Usuario.email +"</div>"+
+                    "<div class='panel-body'>Direccion del usuario:   "+ Usuario.address.street +","+Usuario.address.suite +","+Usuario.address.city +"</div>"+
+                    "<div class='panel-body'>Correo del usuario:   "+ Usuario.phone +"</div>"+   
+                    "<div class='panel-body'>Correo del usuario:   "+ Usuario.website +"</div>"+ 
+                    "</div>";
+
+                        
+            $('#datos').append(post);
+           
+            });    
     </script>
 
-    <table class=" table table-bordered" id="estudiantes" border="5">
+    <table class=" table table-bordered" id="datos" border=" ">
 
     </table>
 </body>

@@ -6,30 +6,13 @@
     <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 
     <script>
-    var Post= function(){
-    var self=this;
-    self.userId;
-    self.id;
-    self.title;
-    self.body;
-
-    };
+ 
 
   $(document).ready(function (){
 
-      $("#buscar").click(function(){
-       var root = 'https://jsonplaceholder.typicode.com';
-       var id=$("#post_id").val();
-      $.ajax({
-        url: root + '/posts/'+id,
-        method: 'GET'
-      }).then(function(data) {                  
-        console.log(data.title);
-        $("#titulo").text(data.body);
-      });
-
-      });
-
+    var urlParametro = new URLSearchParams(window.location.search);
+    var idUsuario = urlParametro.get('id');
+     
   });
       
     </script>
