@@ -12,6 +12,7 @@ $(document).ready(function () {
             "<h3 class='panel-title'>"+ post.title +"</h3>"+
             "</div>"+
             "<div class='panel-body'>"+ post.body+"</div>"+
+            
             "</div>";    
     $('#detalle').append(detalle);
 

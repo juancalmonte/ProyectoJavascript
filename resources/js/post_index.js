@@ -8,13 +8,16 @@ function cargarPost(){
 	}).then(function(data) {
         var localStorage= window.localStorage;
 		var postFavoritos={};
-		var dbpostFavoritos= localStorage.getItem('postFavoritos');
+        var dbpostFavoritos= localStorage.getItem('postFavoritos');
+        var usuariosDb= localStorage.getItem('usuarios');
+		var usuariosP={};
+		usuariosP= JSON.parse(usuariosDb);
 		if(dbpostFavoritos!=null){
 			postFavoritos=JSON.parse(dbpostFavoritos);
-			
 		} 
 		$.each(data, function(i, p){ 
-			var existe= p.id in postFavoritos;	
+            var existe= p.id in postFavoritos;
+            var usuarioPost=usuariosP[p.userId - 1];
             var post="<div class='panel panel-primary'>"+ 
             "<div class='row'>"+
             "<div class='panel-heading'>"+
@@ -26,7 +29,7 @@ function cargarPost(){
 			"<div class='row'>"+
 			"<div class='col-md-10'>"
 			+ " <a href='datosusuario.html?id="+p.userId+"'class='publicador'>"
-			+ "  <span class='glyphicon glyphicon-user'></span> " + p.userId  + " </a>"+
+			+ "  <span class='glyphicon glyphicon-user'></span> " + usuarioPost.name + " </a>"+
 			"</div>"+
 			"<div class='col-md-2'>"+
 			"<button class='btn glyphicon "+(existe ? 'glyphicon-star': 'glyphicon-star-empty')+ " post_boton' data-postid='"+p.id+"'></button>"+
@@ -39,7 +42,6 @@ function cargarPost(){
             "</div>"+
             "</div>";  
 			$('#post').append(post);
-			
 		});
 		
 		$('.post_boton').click(function(){
@@ -60,18 +62,6 @@ function cargarPost(){
 	});
 
 };
-function traerUsuarios(root)
-{
-	$.ajax({
-        url: root + '/users',
-        method: 'GET'
-      }).then(function (usuarios) {
-        $.each(usuarios, function (index, user) {
-			debugger;
-			guardarDbUsuarios(user);
-        });
-      });
-}
 function agregarPostFavorito(postId){
 	var localStorage= window.localStorage;
 	var postFavoritos={};
@@ -93,47 +83,34 @@ function agregarPostFavorito(postId){
 
 $(document).ready(function(){
 	var root = 'https://jsonplaceholder.typicode.com';
-	userid = cargarPost();
+	cargarPost();
+	buscarUsuarios(root);
 	
-	//traerUsuarios(root);
-	traerUsers(root);
-	buscarNombre(2);
 });
 
-function buscarNombre(userId)
-{
-	var myStorage = window.localStorage;
-	var usuariosArray = JSON.parse(myStorage.getItem("usuarios"));
-	$.each(usuariosArray, function(i, usuarios){
-		$.each(usuarios, function(index,id)
-		{	
-		if(userId === id.id)
-			{
-				console.log(id.name);
-			}
-	});
-});
-}
-function guardarDb(user) {
-    var myStorage = window.localStorage;
-    var users = [];
-    var dbuser = myStorage.getItem("usuarios");
 
-    if (dbuser != null) {
-        users = JSON.parse(dbuser);
-	}
-	
-    users.push(user);
-	myStorage.setItem("usuarios", JSON.stringify(users));
-	
-}
-function traerUsers(root) {
-    $.ajax({
-		url: root + '/users',
-		method: 'GET'
-	  }).then(function(data) {
-		
-		guardarDb(data);
-	  });
-}
 
+
+function guardarUsuarios(usuario){
+    var usuarios=[];
+    myStorage=window.localStorage;
+    var dbUsuarios= myStorage.getItem("usuarios");
+    if(dbUsuarios !=null)
+    {
+      usuarios= JSON.parse(dbUsuarios)
+    }
+      usuarios.push(usuario);
+      myStorage.setItem("usuarios",JSON.stringify(usuarios));
+};
+
+function buscarUsuarios(root){
+        $.ajax({
+                url: root + '/users',
+                method: 'GET'
+              }).then(function(data) {
+                $.each(data,function(i,usuario){
+                  guardarUsuarios(usuario);
+                });
+                
+              }); 
+};
