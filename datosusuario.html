@@ -8,6 +8,7 @@
 
 <body>
     <script>
+
         var urlParametro = new URLSearchParams(window.location.search);
         var idUsuario = urlParametro.get('id');
         var root = 'https://jsonplaceholder.typicode.com';
@@ -31,11 +32,19 @@
             $('#datos').append(post);
            
             });    
+
+
     </script>
+    <div class="container">
+        <div id="datosusuario" class="row">
+
 
     <table class=" table table-bordered" id="datos" border=" ">
 
-    </table>
+        </div>
+
+
+    </div>
 </body>
 
 </html>

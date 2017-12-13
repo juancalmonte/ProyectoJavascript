@@ -15,15 +15,18 @@ function cargarPost(){
 		} 
 		$.each(data, function(i, p){ 
 			var existe= p.id in postFavoritos;	
-			var post="<div class='row'>"+
+            var post="<div class='panel panel-primary'>"+ 
+            "<div class='row'>"+
+            "<div class='panel-heading'>"+
 			"<div class='col-md-12'>"+
-			"<a class='titulo' href='detallePost.html?postId="+p.id+"'<h3>"+p.title+"</h3></a>"+
+            "<a class='titulo' href='detallePost.html?postId="+p.id+"'<h3 class='panel-title'>"+p.title+"</h3></a>"+
+            "</div>"+
 			"</div>"+
 			"</div>"+
 			"<div class='row'>"+
 			"<div class='col-md-10'>"
-			+ " <a href='datosusuario.html?id=" + p.userId + "' class = 'publicador''>"
-			+ "  <span class='glyphicon glyphicon-user'></span> " +  + " </a>"+
+			+ " <a href='datosusuario.html?id="+p.userId+"'class='publicador'>"
+			+ "  <span class='glyphicon glyphicon-user'></span> " + p.userId  + " </a>"+
 			"</div>"+
 			"<div class='col-md-2'>"+
 			"<button class='btn glyphicon "+(existe ? 'glyphicon-star': 'glyphicon-star-empty')+ " post_boton' data-postid='"+p.id+"'></button>"+
@@ -31,9 +34,10 @@ function cargarPost(){
 			"</div>"+
 			"<div class='row'>"+
 			"<div class='col-md-12'>"+
-			"<p>"+p.body+"</p>"+
+			"<div class='panel-body'>"+ p.body+"</div>"+
 			"</div>"+
-			"</div>";
+            "</div>"+
+            "</div>";  
 			$('#post').append(post);
 			
 		});
@@ -56,18 +60,6 @@ function cargarPost(){
 	});
 
 };
-/*
-function guardarDbUsuarios(usuario) {
-    myStorage = window.localStorage;
-    var usuarios = [];
-    var dbUsuarios = myStorage.getItem("usuarios");
-
-    if (dbUsuarios != null) {
-        usuarios = JSON.parse(usuario);
-    }
-    usuarios.push(usuario);
-	myStorage.setItem("usuarios", JSON.stringify(usuarios));
-}
 function traerUsuarios(root)
 {
 	$.ajax({
@@ -79,7 +71,7 @@ function traerUsuarios(root)
 			guardarDbUsuarios(user);
         });
       });
-}*/
+}
 function agregarPostFavorito(postId){
 	var localStorage= window.localStorage;
 	var postFavoritos={};

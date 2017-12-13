@@ -7,7 +7,7 @@ $(document).ready(function () {
         method: 'GET'
     }).then(function (post) 
     {
-        var detalle= "<div class='panel panel-primary'>"+
+        var detalle= "<div class='panel panel-danger'>"+
             "<div class='panel-heading'>"+
             "<h3 class='panel-title'>"+ post.title +"</h3>"+
             "</div>"+
@@ -26,10 +26,10 @@ $(document).ready(function () {
                 {
                     var comentarios= "<div class='panel panel-primary'>"+
                     "<div class='panel-heading'>"+
-                    "<h3 class='panel-title'>"+ comentario.body +"</h3>"+
+                    "<h3 class='panel-title'> Nombre:  "+ comentario.name +"</h3>"+
                     "</div>"+
-                    "<div class='panel-body'>"+ comentario.name+"</div>"+
-                    "<div class='panel-body'>"+ comentario.email+"</div>"+
+                    "<div class='panel-body'>"+ comentario.body+"</div>"+
+                    "<div class='panel-body'> Correo:   "+ comentario.email+"</div>"+
                     "</div>";    
             $('#comentarios').append(comentarios);
                 }
