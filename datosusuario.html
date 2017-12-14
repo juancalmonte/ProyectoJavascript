@@ -8,40 +8,62 @@
 
 <body>
     <script>
-
         var urlParametro = new URLSearchParams(window.location.search);
         var idUsuario = urlParametro.get('id');
         var root = 'https://jsonplaceholder.typicode.com';
-            $.ajax({
-                url: root + '/users/' + idUsuario,
-                method: 'GET'
-            }).then(function (Usuario) 
-            {
-                var post= "<div class='panel panel-primary'>"+
-                    "<div class='panel-heading'>"+
-                    "<h3 class='panel-title'>Datos del usuario</h3>"+
-                    "</div>"+
-                    "<div class='panel-body'>Nombre del usuario:   "+ Usuario.name+"</div>"+
-                    "<div class='panel-body'>Correo del usuario:   "+ Usuario.email +"</div>"+
-                    "<div class='panel-body'>Direccion del usuario:   "+ Usuario.address.street +","+Usuario.address.suite +","+Usuario.address.city +"</div>"+
-                    "<div class='panel-body'>Correo del usuario:   "+ Usuario.phone +"</div>"+   
-                    "<div class='panel-body'>Correo del usuario:   "+ Usuario.website +"</div>"+ 
-                    "</div>";
+        $.ajax({
+            url: root + '/users/' + idUsuario,
+            method: 'GET'
+        }).then(function (Usuario) {
+            var post = "<div class='panel panel-primary'>" +
+                "<div class='panel-heading'>" +
+                "<h3 class='panel-title'>Datos del usuario</h3>" +
+                "</div>" +
+                "<div class='panel-body'>Nombre del usuario:   " + Usuario.name + "</div>" +
+                "<div class='panel-body'>Correo del usuario:   " + Usuario.email + "</div>" +
+                "<div class='panel-body'>Direccion del usuario:   " + Usuario.address.street + "," + Usuario.address.suite + "," + Usuario.address.city + "</div>" +
+                "<div class='panel-body'>Correo del usuario:   " + Usuario.phone + "</div>" +
+                "<div class='panel-body'>Correo del usuario:   " + Usuario.website + "</div>" +
+                "</div>";
 
-                        
+
             $('#datos').append(post);
-           
-            });    
+            cantidadPost(idUsuario);
 
+        });
+        function cantidadPost(idUsuario) {
+            var posts = 0;
+            var root = 'https://jsonplaceholder.typicode.com';
+            $.ajax({
+                url: root + '/posts?userId=' + idUsuario,
+                method: 'GET'
+            }).then(function (data) {
 
+                $.each(data, function (i, p) {
+                    posts++;
+                });
+                var cantpost = "<div class='row'>"
+                    + "<div class='col-md-12'>"
+                    + "<h4>" + "Cantidad de Posts:" + posts + "</h4>"
+                    + "</div>"
+                    + "</div>"
+
+                $('#cant').append(cantpost);
+            });
+
+        };
     </script>
     <div class="container">
         <div id="datosusuario" class="row">
 
 
-    <table class=" table table-bordered" id="datos" border=" ">
+            <table class=" table table-bordered" id="datos" border=" ">
 
         </div>
+        <div class="row">          
+            <table class=" table table-bordered" id="cant" border=" ">
+         </div>
+        
 
 
     </div>
